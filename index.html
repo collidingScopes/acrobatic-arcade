@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acrobatic Arcade</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load MediaPipe dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" defer></script>
+</head>
+<body>
+    <div id="title-div">
+        <h1 class="fluid">Acrobatic Arcade 💃</h1>
+        <p id="subtitle">Free web games played with body movements and hand gestures. Move, play, win!</p>
+    </div>
+    <ul>
+      <li data-active="true">
+        <article>
+          <h3>Fruit Ninja</h3>
+          <p>Wave your hands and slice some fruits!</p>
+          <span class="emoji-icon">🍉</span>
+          <a href="https://collidingscopes.github.io/fruit-ninja/" >
+            <span class="play-link">Play now</span>
+          </a>
+          <img src="assets/fruitninja.png" alt="" />
+        </article>
+      </li>
+      <li>
+        <article>
+            <h3>3D Tetris</h3>
+            <p>Classic Tetris game using hand gesture controls</p>
+            <span class="emoji-icon">🟦</span>
+            <a href="https://collidingscopes.github.io/tetris/" >
+                <span class="play-link">Play now</span>
+            </a>
+            <img src="assets/tetris.webp" alt="" />
+          </article>
+      </li>
+      <li>
+        <article>
+            <h3>Keep-Ups</h3>
+            <p>Keep the football in the air with your legs / knees</p>
+            <span class="emoji-icon">⚽</span>
+            <a href="https://collidingscopes.github.io/keep-ups/" >
+                <span class="play-link">Play now</span>
+            </a>
+            <img src="assets/keepups.png" alt="" />
+          </article>
+      </li>
+      <li>
+        <article>
+            <h3>Cumbersome Chess</h3>
+            <p>Chess, but it uses 3D hand tracking and is way more inconvenient</p>
+            <span class="emoji-icon">♘</span>
+            <a href="https://cumbersome-chess.netlify.app/" >
+                <span class="play-link">Play now</span>
+            </a>
+            <img src="assets/chess.jpg" alt="" />
+          </article>
+      </li>
+      <li>
+        <article>
+            <h3>808s and Hearbreaks</h3>
+            <p>Hand-controlled drumming game</p>
+            <span class="emoji-icon">🥁</span>
+            <a href="https://rosebud.ai/p/ba343b61-deff-43e5-a9ed-1f7aa21d37cf" >
+                <span class="play-link">Play now</span>
+            </a>
+            <img src="assets/808.webp" alt="" />
+          </article>
+      </li>
+      <li>
+        <article>
+            <h3>The Floor is Lava</h3>
+            <p>Full body movement game. Move / jump to avoid the lava!</p>
+            <span class="emoji-icon">🌋</span>
+            <a href="https://rosebud.ai/p/9b084b56-eccd-4f3c-9d7c-ca91af2dc548" >
+                <span class="play-link">Play now</span>
+            </a>
+            <img src="assets/lava.png" alt="" />
+          </article>
+      </li>
+      <li>
+        <article>
+            <h3>Watermelon Defense</h3>
+            <p>Use your hands to stop ghosts from stealing your watermelon!</p>
+            <span class="emoji-icon">👻</span>
+            <a href="https://rosebud.ai/p/21040074-6ca8-49c2-a5ec-2025f60fbb44" >
+                <span class="play-link">Play now</span>
+            </a>
+            <img src="assets/watermelon.png" alt="" />
+        </article>
+      </li>
+    </ul>
+    <button id="hand-gesture-button" title="Enable hand gesture controls">✋</button>
+
+    <script src="main.js" type="module"></script>
+</body>
+</html>

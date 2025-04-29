@@ -1,0 +1,330 @@
+@import url('https://unpkg.com/normalize.css') layer(normalize);
+
+@layer normalize, base, demo;
+
+@layer demo {
+  body {
+    background: light-dark(#fff, #ffd465);
+    /* background: light-dark(#fff, #ffb700); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding-block: 2rem;
+  }
+
+  #title-div{
+    margin: 0 auto;
+    text-align: center;
+    max-width: 95vw;
+  }
+
+  h1,
+  p {
+    margin: 0;
+  }
+
+  h1.fluid {
+    --font-size-min: 22;
+    --font-level: 5;
+    color: rgb(255, 77, 0);
+  }
+
+  #subtitle{
+    text-align: center;
+    font-size: 24px;
+    color: rgb(46, 84, 255);
+  }
+
+  h3 {
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  body > p {
+    width: 74ch;
+    max-width: calc(100% - 4rem);
+    text-wrap: balance;
+    font-family: monospace;
+    margin-bottom: 4rem;
+    line-height: 1.5;
+    opacity: 0.8;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+  }
+
+  li :is(svg, h3, p) {
+    opacity: 1.0;
+    transition: opacity calc(var(--speed) * 1.2) var(--easing);
+  }
+
+  li :is(a, p) {
+    opacity: 0;
+    transition: opacity calc(var(--speed) * 1.2) var(--easing);
+    width: fit-content;
+  }
+
+  li img {
+    filter: grayscale(1) brightness(1);
+    scale: 1.1;
+    transition-property: filter, scale;
+    transition-duration: calc(var(--speed) * 1.2);
+    transition-timing-function: var(--easing);
+  }
+
+  [data-active='true'] :is(a, p, h3, svg) {
+    opacity: var(--opacity, 1);
+  }
+  /*
+  [data-active='true'] :is(a, p) {
+    transition-delay: calc(var(--speed) * 0.25);
+  }
+  */
+  [data-active='true'] img {
+    filter: grayscale(0) brightness(1.5);
+    scale: 1;
+    transition-delay: calc(var(--speed) * 0.25);
+  }
+
+  article {
+    width: calc(var(--article-width) * 1px);
+    height: 100%;
+    position: absolute;
+    font-family: monospace;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding-inline: calc(var(--base) * 0.5 - 9px);
+    padding-bottom: 1rem;
+    overflow: hidden;
+
+    h3 {
+      position: absolute;
+      top: 1rem;
+      left: calc(var(--base) * 0.5);
+      transform-origin: 0 50%;
+      rotate: 90deg;
+      font-size: 1rem;
+      font-weight: 300;
+      text-transform: uppercase;
+      font-family: monospace;
+    }
+    svg {
+      width: 18px;
+      fill: none;
+    }
+
+    p {
+      font-size: 13px;
+      text-wrap: balance;
+      line-height: 1.25;
+      --opacity: 0.8;
+    }
+
+    a {
+      position: absolute;
+      bottom: 1rem;
+      height: 18px;
+      line-height: 1;
+      color: inherit;
+      
+      &:is(:focus-visible, :hover) {
+        outline: none;
+        span {
+          text-decoration: underline;
+          text-underline-offset: 4px;
+        }
+      }
+
+      span {
+        display: inline-block;
+        line-height: 18px;
+        translate: calc(var(--base) * 0.5);
+        font-weight: 500;
+      }
+    }
+
+    img {
+      position: absolute;
+      pointer-events: none;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      mask: radial-gradient(100% 100% at 80% 0, #e22b2b, rgba(0, 0, 0, 0.1));
+    }
+
+    .play-link {
+        /* color: rgb(255, 77, 0); */
+        /* color: rgb(249, 192, 255); */
+        color: #ffd465;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+  }
+  /* gotta use some Math on the container really */
+  /* width is "ideal" 7 * 80px + 6 * gap + say 300px or whatever the ideal width is */
+  :root {
+    --gap: 8px;
+    --base: clamp(2rem, 8cqi, 80px);
+    --easing: linear(
+      0 0%,
+      0.1538 4.09%,
+      0.2926 8.29%,
+      0.4173 12.63%,
+      0.5282 17.12%,
+      0.6255 21.77%,
+      0.7099 26.61%,
+      0.782 31.67%,
+      0.8425 37%,
+      0.8887 42.23%,
+      0.9257 47.79%,
+      0.9543 53.78%,
+      0.9752 60.32%,
+      0.9883 67.11%,
+      0.9961 75%,
+      1 100%
+    );
+    --speed: 0.6s;
+  }
+  ul {
+    display: grid;
+    container-type: inline-size;
+    grid-template-columns: 10fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: var(--gap);
+    list-style-type: none;
+    justify-content: center;
+    padding: 0;
+    height: clamp(450px, 45dvh, 600px);
+    margin: 0;
+    width: calc(
+      ((var(--items) - 1) * var(--base)) + ((var(--items) - 1) * var(--gap)) +
+        var(--ideal)
+    );
+    width: 820px;
+    max-width: calc(100% - 4rem);
+    transition: grid-template-columns var(--speed) var(--easing);
+  }
+
+  li {
+    /* outline: 4px dashed canvasText; */
+    background: light-dark(#fff, #000);
+    position: relative;
+    overflow: hidden;
+    min-width: var(--base);
+    border-radius: 8px;
+    border: 1px solid color-mix(in hsl, canvas, canvasText 50%);
+  }
+
+  .emoji-icon{
+    font-size: 22px;
+  }
+
+  #hand-gesture-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: rgb(197, 252, 255);
+    font-size: 32px;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgb(255, 77, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  #hand-gesture-button:hover {
+    transform: scale(1.1);
+    background-color: rgb(255, 234, 203);
+  }
+  
+  #hand-gesture-button:active {
+    transform: scale(0.95);
+  }
+  
+  /* Webcam container styles */
+  #webcam-container {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+  
+  #webcam-container:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: scale(1.02);
+  }
+  
+  #tracking-status {
+    transition: all 0.3s ease;
+  }
+}
+
+@layer base {
+  :root {
+    --font-size-min: 16;
+    --font-size-max: 20;
+    --font-ratio-min: 1.2;
+    --font-ratio-max: 1.33;
+    --font-width-min: 375;
+    --font-width-max: 1500;
+  }
+
+  html {
+    color-scheme: light dark;
+  }
+
+  [data-theme='light'] {
+    color-scheme: light only;
+  }
+
+  [data-theme='dark'] {
+    color-scheme: dark only;
+  }
+
+  :where(.fluid) {
+    --fluid-min: calc(
+      var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
+    );
+    --fluid-max: calc(
+      var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
+    );
+    --fluid-preferred: calc(
+      (var(--fluid-max) - var(--fluid-min)) /
+        (var(--font-width-max) - var(--font-width-min))
+    );
+    --fluid-type: clamp(
+      (var(--fluid-min) / 16) * 1rem,
+      ((var(--fluid-min) / 16) * 1rem) -
+        (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
+        (var(--fluid-preferred) * var(--variable-unit, 100vi)),
+      (var(--fluid-max) / 16) * 1rem
+    );
+    font-size: var(--fluid-type);
+  }
+
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+  }
+
+  body {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
+      Helvetica, Arial, sans-serif, system-ui;
+  }
+}
