@@ -118,7 +118,7 @@ const setActiveItem = (index) => {
     items[i].dataset.active = (i === index).toString()
   }
   
-  // Update grid layout
+  // Update grid layout - MODIFIED to handle any number of items
   const cols = new Array(items.length)
     .fill()
     .map((_, i) => {
@@ -451,6 +451,23 @@ list.addEventListener('click', setIndex)
 list.addEventListener('pointermove', setIndex)
 document.addEventListener('keydown', handleKeyboardNavigation)
 
+// Set initial grid columns based on number of items
+const initializeGrid = () => {
+  // Set grid template columns based on number of items
+  const initialCols = new Array(items.length)
+    .fill()
+    .map((_, i) => {
+      return i === currentIndex ? '10fr' : '1fr'
+    })
+    .join(' ')
+  
+  list.style.setProperty('grid-template-columns', initialCols)
+  
+  // Also set a CSS variable to track the number of items
+  list.style.setProperty('--items-count', items.length)
+}
+
+// Adjust container width based on number of items
 const resync = () => {
   const w = Math.max(
     ...[...items].map((i) => {
@@ -458,9 +475,24 @@ const resync = () => {
     })
   )
   list.style.setProperty('--article-width', w)
+  
+  // Calculate and adjust the container width based on number of items
+  // This allows the UI to scale with more items
+  const baseWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--base')) || 80
+  const gap = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 8
+  
+  // Calculate the ideal width based on number of items
+  // We allow the width to grow with more items, but cap it at a maximum width
+  const idealExpandedWidth = 300 // Width of expanded item
+  const totalWidth = ((items.length - 1) * (baseWidth + gap)) + idealExpandedWidth
+  const maxWidth = Math.min(totalWidth, window.innerWidth * 0.95) // Limit to 95% of viewport
+  
+  // Apply the calculated width
+  list.style.width = `${maxWidth}px`
 }
 
-// Initialize active item
+// Initialize active item and grid
+initializeGrid()
 setActiveItem(currentIndex)
 
 window.addEventListener('resize', resync)
