@@ -223,11 +223,13 @@
 
   #links-para{
     position: fixed;
-    bottom: 0px;
+    bottom: 5px;
     left: 5px;
     font-size: 14px;
     color:rgb(46, 84, 255) !important;
     text-align: left;
+    padding: 0;
+    margin: 0;
   }
 
   .social-link {
@@ -405,4 +407,8 @@
     font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
       Helvetica, Arial, sans-serif, system-ui;
   }
+}
+
+.hidden {
+  display: none;
 }

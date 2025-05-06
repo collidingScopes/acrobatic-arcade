@@ -2,6 +2,10 @@
 const list = document.querySelector('ul')
 const items = list.querySelectorAll('li')
 const handGestureButton = document.getElementById('hand-gesture-button')
+let isMobileView = window.innerWidth <= 500; // Check if we're in mobile view
+if(isMobileView){
+  handGestureButton.classList.add("hidden");
+}
 
 // Track current active index
 let currentIndex = 0
