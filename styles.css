@@ -5,7 +5,6 @@
 @layer demo {
   body {
     background: light-dark(#fff, #ffda7b);
-    /* background: light-dark(#fff, #ffb700); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,11 +78,7 @@
   [data-active='true'] :is(a, p, h3, svg) {
     opacity: var(--opacity, 1);
   }
-  /*
-  [data-active='true'] :is(a, p) {
-    transition-delay: calc(var(--speed) * 0.25);
-  }
-  */
+
   [data-active='true'] img {
     filter: grayscale(0) brightness(1.5);
     scale: 1;
@@ -162,16 +157,12 @@
     }
 
     .play-link {
-        /* color: rgb(255, 77, 0); */
-        /* color: rgb(249, 192, 255); */
         color: #ffd465;
         font-weight: bold;
         font-size: 18px;
     }
-
   }
-  /* gotta use some Math on the container really */
-  /* width is "ideal" 7 * 80px + 6 * gap + say 300px or whatever the ideal width is */
+
   :root {
     --gap: 8px;
     --base: clamp(2rem, 8cqi, 80px);
@@ -196,7 +187,6 @@
     --speed: 0.6s;
   }
   
-  /* MODIFIED: Removed hardcoded grid-template-columns, now set by JavaScript */
   ul {
     display: grid;
     container-type: inline-size;
@@ -206,25 +196,19 @@
     padding: 0;
     height: clamp(450px, 45dvh, 600px);
     margin: 0;
-    /* MODIFIED: Width is now calculated in JavaScript based on number of items */
     max-width: calc(100% - 2rem);
     transition: grid-template-columns var(--speed) var(--easing);
-    /* Add a responsive container width that adapts to the screen size */
     width: 95vw;
-    /* Make sure the component can scroll horizontally on mobile when needed */
     overflow-x: auto;
-    /* Hide scrollbar but keep functionality */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
   
-  /* Hide scrollbar for Chrome, Safari and Opera */
   ul::-webkit-scrollbar {
     display: none;
   }
 
   li {
-    /* outline: 4px dashed canvasText; */
     background: light-dark(#fff, #000);
     position: relative;
     overflow: hidden;
@@ -238,11 +222,12 @@
   }
 
   #links-para{
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
+    position: fixed;
+    bottom: 0px;
+    left: 5px;
     font-size: 14px;
     color:rgb(46, 84, 255) !important;
+    text-align: left;
   }
 
   .social-link {
@@ -276,7 +261,6 @@
     transform: scale(0.95);
   }
   
-  /* Webcam container styles */
   #webcam-container {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
@@ -291,14 +275,76 @@
     transition: all 0.3s ease;
   }
   
-  /* Added: Responsive adjustments for smaller screens */
+  /* Mobile responsive layout */
   @media (max-width: 768px) {
     ul {
-      height: clamp(350px, 40dvh, 500px);
+      /* Change from horizontal to vertical layout */
+      grid-template-columns: 1fr !important; /* Override JS-set columns */
+      grid-auto-rows: minmax(80px, auto);
+      height: auto !important;
+      max-height: 80vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+      width: 90vw;
+      padding-bottom: 60px; /* Space for links at bottom */
+      transition: grid-template-rows var(--speed) var(--easing);
+    }
+    
+    li {
+      min-height: 80px;
+      width: 100%;
+      transition: all var(--speed) var(--easing);
+    }
+    
+    [data-active='true'] {
+      min-height: 250px;
+    }
+    
+    article {
+      width: 100% !important;
+      height: 100%;
+      padding: 1rem;
     }
     
     article h3 {
-      font-size: 0.9rem;
+      position: relative;
+      top: 0;
+      left: 0;
+      transform-origin: 0 0;
+      rotate: 0deg;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Adjust positioning for mobile view */
+    article p {
+      font-size: 14px;
+      position: relative;
+      margin-top: 1.5rem;
+    }
+    
+    article a {
+      position: relative;
+      display: inline-block;
+      margin-top: 1rem;
+      height: auto;
+    }
+    
+    article a span {
+      translate: 0;
+    }
+    
+    /* Adjust masking for vertical layout */
+    article img {
+      mask: radial-gradient(100% 100% at 50% 0, #e22b2b, rgba(0, 0, 0, 0.1));
+    }
+    
+    /* Make hand gesture button more accessible on mobile */
+    #hand-gesture-button {
+      top: auto;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
     }
   }
 }
