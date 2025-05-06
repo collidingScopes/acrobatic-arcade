@@ -2,16 +2,18 @@
 
 @layer normalize, base, demo;
 
+
+body {
+  background: light-dark(#fff, #ffda7b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding-block: 2rem;
+}
+
 @layer demo {
-  body {
-    background: light-dark(#fff, #ffda7b);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 1rem;
-    padding-block: 2rem;
-  }
 
   #title-div{
     margin: 0 auto;
@@ -279,6 +281,7 @@
   
   /* Mobile responsive layout */
   @media (max-width: 768px) {
+
     ul {
       /* Change from horizontal to vertical layout */
       grid-template-columns: 1fr !important; /* Override JS-set columns */
