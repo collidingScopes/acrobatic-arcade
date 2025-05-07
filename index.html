@@ -28,11 +28,6 @@
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png"> -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="eb59c81c-27cb-4e1d-9e8c-bfbe70c48cd9"></script>
 
-    <!-- Load MediaPipe dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" defer></script>
 </head>
 <body>
     <div id="title-div">
@@ -42,98 +37,85 @@
     <ul>
       <!-- Original items -->
       <li data-active="true">
+        <a href="https://collidingscopes.github.io/fruit-ninja/" >
         <article>
           <h3>Fruit Ninja</h3>
           <p>Wave your hands and slice some fruits!</p>
-          <span class="emoji-icon">🍉</span>
-          <a href="https://collidingscopes.github.io/fruit-ninja/" >
-            <span class="play-link">Play now</span>
-          </a>
           <img src="assets/fruitninja.png" alt="" />
         </article>
+        </a>
       </li>
       <li>
+        <a href="https://collidingscopes.github.io/tetris/">
         <article>
             <h3>3D Tetris</h3>
             <p>Classic Tetris game using hand gesture controls</p>
-            <span class="emoji-icon">🟦</span>
-            <a href="https://collidingscopes.github.io/tetris/" >
-                <span class="play-link">Play now</span>
-            </a>
             <img src="assets/tetris.webp" alt="" />
           </article>
+        </a>
       </li>
       <li>
+        <a href="https://collidingscopes.github.io/keep-ups/" >
         <article>
             <h3>Keep-Ups</h3>
             <p>Keep the football in the air with your legs / knees</p>
-            <span class="emoji-icon">⚽</span>
-            <a href="https://collidingscopes.github.io/keep-ups/" >
-                <span class="play-link">Play now</span>
-            </a>
             <img src="assets/keepups.png" alt="" />
-          </article>
+        </article>
+        </a>
       </li>
       <li>
+        <a href="https://cumbersome-chess.netlify.app/" >
         <article>
             <h3>Cumbersome Chess</h3>
             <p>Chess, but it uses 3D hand tracking and is way more inconvenient</p>
-            <span class="emoji-icon">♘</span>
-            <a href="https://cumbersome-chess.netlify.app/" >
-                <span class="play-link">Play now</span>
-            </a>
             <img src="assets/chess.jpg" alt="" />
-          </article>
+        </article>
+        </a>
       </li>
       <li>
+        <a href="https://rosebud.ai/p/ba343b61-deff-43e5-a9ed-1f7aa21d37cf" >
         <article>
             <h3>808s and Hearbreaks</h3>
             <p>Hand-controlled drumming game</p>
-            <span class="emoji-icon">🥁</span>
-            <a href="https://rosebud.ai/p/ba343b61-deff-43e5-a9ed-1f7aa21d37cf" >
-                <span class="play-link">Play now</span>
-            </a>
             <img src="assets/808.webp" alt="" />
-          </article>
+        </article>
+        </a>
       </li>
       <li>
+        <a href="https://rosebud.ai/p/9b084b56-eccd-4f3c-9d7c-ca91af2dc548" >
         <article>
             <h3>The Floor is Lava</h3>
             <p>Full body movement game. Move / jump to avoid the lava!</p>
-            <span class="emoji-icon">🌋</span>
-            <a href="https://rosebud.ai/p/9b084b56-eccd-4f3c-9d7c-ca91af2dc548" >
-                <span class="play-link">Play now</span>
-            </a>
             <img src="assets/lava.png" alt="" />
-          </article>
+        </article>
+        </a>
       </li>
       <li>
+        <a href="https://rosebud.ai/p/21040074-6ca8-49c2-a5ec-2025f60fbb44" >
         <article>
             <h3>Watermelon Defense</h3>
             <p>Use your hands to stop ghosts from stealing your watermelon!</p>
-            <span class="emoji-icon">👻</span>
-            <a href="https://rosebud.ai/p/21040074-6ca8-49c2-a5ec-2025f60fbb44" >
-                <span class="play-link">Play now</span>
-            </a>
             <img src="assets/watermelon.png" alt="" />
         </article>
+        </a>
       </li>
       
       <li>
+        <a href="https://rosebud.ai/p/6c2096f2-6107-4837-b892-a87e75402845" >
         <article>
             <h3>Face Frogger</h3>
             <p>Cross the road with face movements</p>
-            <span class="emoji-icon">🐸</span>
-            <a href="https://rosebud.ai/p/6c2096f2-6107-4837-b892-a87e75402845" >
-                <span class="play-link">Play now</span>
-            </a>
             <img src="assets/frogger.png" alt="" />
         </article>
+        </a>
       </li>
     </ul>
-    <button id="hand-gesture-button" title="Enable hand gesture controls">✋</button>
-    <p id="links-para"><a class="social-link" href="https://x.com/measure_plan" target="_blank">Twitter</a> | <a class="social-link" href="https://www.instagram.com/stereo.drift/" target="_blank">Instagram</a> | <a class="social-link" href="https://github.com/collidingScopes" target="_blank">Code</a></p>
+    <p id="links-para">
+      <a class="social-link" href="https://x.com/measure_plan" target="_blank">Twitter</a> |
+      <a class="social-link" href="https://www.instagram.com/stereo.drift/" target="_blank">Instagram</a> |
+      <a class="social-link" href="https://github.com/collidingScopes" target="_blank">Code</a> |
+      <a class="social-link" href="https://buymeacoffee.com/stereodrift" target="_blank">Buy me a coffee</a>
+    </p>
 
-    <script src="main.js" type="module"></script>
 </body>
 </html>
